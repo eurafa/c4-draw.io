@@ -125,29 +125,17 @@ Draw.loadPlugin(function (ui) {
     };
     C4Person.prototype.handler = c4StateHandler;
     C4Person.prototype.create = function () {
-        var group = new mxCell('', new mxGeometry(0, 0, 160, 180), 'group;rounded=0;labelBackgroundColor=none;fillColor=none;fontColor=#000000;align=center;html=1;');
-        group.setVertex(true);
-        group.setConnectable(false);
-        group.setAttribute('c4Type', 'person');
-        group.c4 = this;
-        var body = new mxCell('', new mxGeometry(0, 70, 160, 110), 'rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=33;strokeColor=#6c8ebf;');
-        body.setParent(group);
-        body.setVertex(true);
-        body.setValue(mxUtils.createXmlDocument().createElement('object'));
-        body.setAttribute('label', 'name<div>[Person]</div><div><br></div><div>Beschreibung</div>');
-        body.setAttribute('placeholders', '1');
-        body.setAttribute('c4Name', 'name');
-        body.setAttribute('c4Type', 'body');
-        body.setAttribute('c4Description', 'Beschreibung');
-        body.c4 = this;
-        var head = new mxCell('', new mxGeometry(40, 0, 80, 80), 'ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;labelBackgroundColor=none;fillColor=#dae8fc;fontSize=12;fontColor=#000000;align=center;strokeColor=#6c8ebf;');
-        head.setParent(group);
-        head.setVertex(true);
-        head.setAttribute('c4Type', 'head');
-        head.c4 = this;
-        group.insert(head);
-        group.insert(body); // child: 0 !!
-        return group;
+        var actor = new mxCell('', new mxGeometry(40, 70, 160, 180), 'shape=actor;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;strokeColor=#6c8ebf;');
+        actor.setParent(group);
+        actor.setVertex(true);
+        actor.setValue(mxUtils.createXmlDocument().createElement('object'));
+        actor.setAttribute('label', 'name<div>[Person]</div><div><br></div><div>Beschreibung</div>');
+        actor.setAttribute('placeholders', '1');
+        actor.setAttribute('c4Name', 'name');
+        actor.setAttribute('c4Type', 'person');
+        actor.setAttribute('c4Description', 'Beschreibung');
+        actor.c4 = this;
+        return actor;
     };
     c4Utils.registCodec(C4Person);
 
